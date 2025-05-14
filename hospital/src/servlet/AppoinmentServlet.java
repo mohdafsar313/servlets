@@ -18,7 +18,6 @@ public class AppoinmentServlet extends GenericServlet {
         System.out.println("running service in AppointmentServlet");
 
         String firstname=servletRequest.getParameter("firstname");
-
         String lastname=servletRequest.getParameter("lastname");
 
         String email=servletRequest.getParameter("email");
