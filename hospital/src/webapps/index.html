@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospital</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body, html {
+          height: 100%;
+          font-family: Arial, sans-serif;
+        }
+
+        .full-background {
+          background-image: url('https://noticiasorienteantioqueno.files.wordpress.com/2011/08/centros_espec_urg2.jpg?w=340&h=228&crop=1'); /* Replace with your image path */
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          position: relative;
+        }
+
+        h1 {
+          color: black;
+          font-size: 7em;
+          white-space: nowrap;
+          position: absolute;
+          animation: scrollText 10s linear infinite;
+        }
+
+        @keyframes scrollText {
+          0% {
+            left: 100%;
+          }
+          100% {
+            left: -100%;
+          }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://play-lh.googleusercontent.com/PWXuDRltjKh7N0Cs5bg_alAFR5EMhK8d9UzafACoA99OJfnhicAQ3FvzRWjPg2gCxtjM" alt="PablosHospital Logo" width="30" height="30" class="d-inline-block align-text-top">
+            PablosHospital
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-link active" aria-current="page" href="appointment.html">Appointment</a>
+                <a class="nav-link" href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="full-background">
+    <h1>Book your Appointment Now!</h1>
+</div>
+
+</body>
+</html>
