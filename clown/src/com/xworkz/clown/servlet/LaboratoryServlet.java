@@ -1,4 +1,7 @@
-import javax.servlet.GenericServlet;
+package com.xworkz.clown.servlet;
+
+import sun.security.timestamp.HttpTimestamper;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -6,25 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebServlet(urlPatterns = "/donation",loadOnStartup = 1)
-public class DonationServlet extends HttpServlet {
-
+@WebServlet(urlPatterns = "/laboratory",loadOnStartup = 1)
+public class LaboratoryServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String name=req.getParameter("name");
-        String email=req.getParameter("email");
+        String location=req.getParameter("location");
         String mobile=req.getParameter("mobile");
-        String amount=req.getParameter("amount");
+        String treatment=req.getParameter("treatment");
         System.out.println("using request dispatcher to forward the req and res to another jsp/servlet");
 
         RequestDispatcher requestDispatcher=
-                req.getRequestDispatcher("donationSuccess.jsp");
-        req.setAttribute("message","Donation Success");
+                req.getRequestDispatcher("laboratorySuccess.jsp");
+        req.setAttribute("message","Laboratory registration");
         req.setAttribute("name",name);
-        req.setAttribute("email",email);
+        req.setAttribute("location",location);
         req.setAttribute("mobile",mobile);
-        req.setAttribute("amount",amount);
+        req.setAttribute("treatment",treatment);
         requestDispatcher.forward(req,resp);
-
     }
 }

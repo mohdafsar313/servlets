@@ -28,7 +28,7 @@
 <h1 class="text-center">JSP Application </h1>
 <div style="border: 2px solid #000; width: 350px; padding: 20px; margin: 50px auto; border-radius: 10px; font-family: Arial, sans-serif;">
     <center>
-        <form action="donation" method="post">
+        <form action="laboratory" method="post">
 
             <div style="margin-bottom: 10px;">
                 <label style="display: inline-block; width: 80px;">Name:</label>
@@ -57,7 +57,7 @@
             </div>
 
 
-            <input type="submit" value="donate" style="padding: 5px 15px;">
+            <input type="submit" value="save" style="padding: 5px 15px;">
         </form>
     </center>
 </div>

@@ -28,7 +28,7 @@
 <h1 class="text-center">JSP Application </h1>
 <div style="border: 2px solid #000; width: 350px; padding: 20px; margin: 50px auto; border-radius: 10px; font-family: Arial, sans-serif;">
     <center>
-        <form action="license" method="post">
+        <form action="licence" method="post">
 
             <div style="margin-bottom: 10px;">
                 <label style="display: inline-block; width: 80px;">Name:</label>
