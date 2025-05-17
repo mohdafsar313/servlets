@@ -1,5 +1,7 @@
 package com.xworkz.clown.servlet;
 
+import Dto.FirDto;
+import Dto.LaboratoryDto;
 import sun.security.timestamp.HttpTimestamper;
 
 import javax.servlet.RequestDispatcher;
@@ -18,14 +20,16 @@ public class LaboratoryServlet extends HttpServlet {
         String mobile=req.getParameter("mobile");
         String treatment=req.getParameter("treatment");
         System.out.println("using request dispatcher to forward the req and res to another jsp/servlet");
+        LaboratoryDto laboratoryDto=new LaboratoryDto();
+        laboratoryDto.setName(name);
+        laboratoryDto.setLocation(location);
+        laboratoryDto.setMobile(mobile);
+        laboratoryDto.setTreatment(treatment);
 
         RequestDispatcher requestDispatcher=
                 req.getRequestDispatcher("laboratorySuccess.jsp");
         req.setAttribute("message","Laboratory registration");
-        req.setAttribute("name",name);
-        req.setAttribute("location",location);
-        req.setAttribute("mobile",mobile);
-        req.setAttribute("treatment",treatment);
+        req.setAttribute("laboratoryDto",laboratoryDto);
         requestDispatcher.forward(req,resp);
     }
 }

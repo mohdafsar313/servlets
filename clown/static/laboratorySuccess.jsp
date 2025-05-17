@@ -25,7 +25,32 @@
 </nav>
 
 <h1 class="text-center">JSP Application </h1>
-<h2>Thank ${message} by ${name}<br> Patient details are:<br> location: ${location}<br> mobile:${mobile}<br> treatment mode: ${treatment}</h2>
+<h2 align="center">Thanks for ${message} </h2>
+<table class="table table-success" style="border: 2px solid black; border-collapse: collapse; width: 60%; margin: 30px auto; font-size: 14px;">
+    <thead>
+    <tr>
+        <th scope="col" style="border: 1px solid black;">SI.No</th>
+        <th scope="col" style="border: 1px solid black;"> NAME</th>
+        <th scope="col" style="border: 1px solid black;">LOCATION</th>
+        <th scope="col" style="border: 1px solid black;">MOBILE</th>
+        <th scope="col" style="border: 1px solid black;">TREATMENT</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" style="border: 1px solid black;">1</th>
+        <td style="border: 1px solid black;">${laboratoryDto.name}</td>
+        <td style="border: 1px solid black;">${laboratoryDto.location}</td>
+        <td style="border: 1px solid black;">${laboratoryDto.mobile}</td>
+        <td style="border: 1px solid black;">${laboratoryDto.treatment}</td>
+    </tr>
+    </tbody>
+</table>
 
+
+
+<div style="position: fixed; bottom: 0; width: 100%; background-color: black; color: white; text-align: center; padding: 10px 0;">
+    <footer>&copy; Xworkz Bengaluru</footer>
+</div>
 </body>
 </html>

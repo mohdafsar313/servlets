@@ -1,5 +1,8 @@
 package com.xworkz.clown.servlet;
 
+import Dto.FirDto;
+import Dto.LicenceDto;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,14 +19,16 @@ public class LicenceServlet extends HttpServlet {
         String mobile=req.getParameter("mobile");
         String licenseType=req.getParameter("licenseType");
         System.out.println("using request dispatcher to forward the req and res to another jsp/servlet");
+        LicenceDto licenceDto=new LicenceDto();
+        licenceDto.setName(name);
+        licenceDto.setEmail(email);
+        licenceDto.setMobile(mobile);
+        licenceDto.setLicenseType(licenseType);
 
         RequestDispatcher requestDispatcher=
                 req.getRequestDispatcher("licenceSuccess.jsp");
         req.setAttribute("message","Licence Successfully Completed");
-        req.setAttribute("name",name);
-        req.setAttribute("email",email);
-        req.setAttribute("mobile",mobile);
-        req.setAttribute("licenseType",licenseType);
+        req.setAttribute("licenceDto",licenceDto);
         requestDispatcher.forward(req,resp);
     }
 }

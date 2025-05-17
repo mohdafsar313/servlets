@@ -25,7 +25,32 @@
 </nav>
 
 <h1 class="text-center">JSP Application </h1>
-<h2>Thank ${message} by ${name}<br> Licence owner details are:<br> email: ${email}<br> mobile:${mobile}<br> Licence mode: ${licenseType}</h2>
+<h2 align="center">Thanks for ${message} </h2>
+<table class="table table-success" style="border: 2px solid black; border-collapse: collapse; width: 60%; margin: 30px auto; font-size: 14px;">
+    <thead>
+    <tr>
+        <th scope="col" style="border: 1px solid black;">SI.No</th>
+        <th scope="col" style="border: 1px solid black;"> NAME</th>
+        <th scope="col" style="border: 1px solid black;">EMAIL</th>
+        <th scope="col" style="border: 1px solid black;">MOBILE</th>
+        <th scope="col" style="border: 1px solid black;">LICENCE TYPE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" style="border: 1px solid black;">1</th>
+        <td style="border: 1px solid black;">${licenceDto.name}</td>
+        <td style="border: 1px solid black;">${licenceDto.email}</td>
+        <td style="border: 1px solid black;">${licenceDto.mobile}</td>
+        <td style="border: 1px solid black;">${licenceDto.licenseType}</td>
+    </tr>
+    </tbody>
+</table>
 
+
+
+<div style="position: fixed; bottom: 0; width: 100%; background-color: black; color: white; text-align: center; padding: 10px 0;">
+    <footer>&copy; Xworkz Bengaluru</footer>
+</div>
 </body>
 </html>

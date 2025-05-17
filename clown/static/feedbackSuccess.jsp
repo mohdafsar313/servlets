@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Licence Success</title>
+    <title>Feedback Success</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
@@ -25,7 +25,36 @@
 </nav>
 
 <h1 class="text-center">JSP Application </h1>
-<h2>Thank ${message} by ${name}<br> Personal details are:<br> email: ${email}<br> mobile:${mobile}<br> Rating: ${rating}<br> Feedback: ${message}</h2>
+<h2 align="center">Thanks for ${message} </h2>
+<table class="table table-success" style="border: 2px solid black; border-collapse: collapse; width: 60%; margin: 30px auto; font-size: 14px;">
+    <thead>
+    <tr>
+        <th scope="col" style="border: 1px solid black;">SI.No</th>
+        <th scope="col" style="border: 1px solid black;"> NAME</th>
+        <th scope="col" style="border: 1px solid black;">EMAIL</th>
+        <th scope="col" style="border: 1px solid black;">MOBILE</th>
+        <th scope="col" style="border: 1px solid black;">RATING</th>
+        <th scope="col" style="border: 1px solid black;">MESSAGE</th>
 
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" style="border: 1px solid black;">1</th>
+        <td style="border: 1px solid black;">${feedbackDto.name}</td>
+        <td style="border: 1px solid black;">${feedbackDto.email}</td>
+        <td style="border: 1px solid black;">${feedbackDto.mobile}</td>
+        <td style="border: 1px solid black;">${feedbackDto.rating}</td>
+        <td style="border: 1px solid black;">${feedbackDto.message}</td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+
+<div style="position: fixed; bottom: 0; width: 100%; background-color: black; color: white; text-align: center; padding: 10px 0;">
+    <footer>&copy; Xworkz Bengaluru</footer>
+</div>
 </body>
 </html>

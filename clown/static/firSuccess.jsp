@@ -26,6 +26,32 @@
 </nav>
 
 <h1 class="text-center">JSP Application </h1>
-<h2>Thanks for ${message} by ${complaintname}<br> Fir details are:<br> dateofincident: ${dateofincident}<br> Location:${Location}<br> crimeType: ${crimeType}</h2>
+<h2 align="center">Thanks for ${message} </h2>
+<table class="table table-success" style="border: 2px solid black; border-collapse: collapse; width: 60%; margin: 30px auto; font-size: 14px;">
+    <thead>
+    <tr>
+        <th scope="col" style="border: 1px solid black;">SI.No</th>
+        <th scope="col" style="border: 1px solid black;">COMPLAINT NAME</th>
+        <th scope="col" style="border: 1px solid black;">DATE OF INCIDENT</th>
+        <th scope="col" style="border: 1px solid black;">LOCATION</th>
+        <th scope="col" style="border: 1px solid black;">CRIME TYPE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row" style="border: 1px solid black;">1</th>
+        <td style="border: 1px solid black;">${firDto.complaintname}</td>
+        <td style="border: 1px solid black;">${firDto.dateofincident}</td>
+        <td style="border: 1px solid black;">${firDto.location}</td>
+        <td style="border: 1px solid black;">${firDto.crimeType}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+<div style="position: fixed; bottom: 0; width: 100%; background-color: black; color: white; text-align: center; padding: 10px 0;">
+    <footer>&copy; Xworkz Bengaluru</footer>
+</div>
 </body>
 </html>

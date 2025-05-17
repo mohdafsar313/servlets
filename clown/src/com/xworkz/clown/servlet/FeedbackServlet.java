@@ -1,5 +1,8 @@
 package com.xworkz.clown.servlet;
 
+import Dto.FeedbackDto;
+import Dto.FirDto;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,15 +20,18 @@ public class FeedbackServlet extends HttpServlet {
         String rating=req.getParameter("rating");
         String message=req.getParameter("message");
         System.out.println("using request dispatcher to forward the req and res to another jsp/servlet");
+        FeedbackDto feedbackDto=new FeedbackDto();
+        feedbackDto.setName(name);
+        feedbackDto.setEmail(email);
+        feedbackDto.setMobile(mobile);
+        feedbackDto.setRating(rating);
+        feedbackDto.setMessage(message);
+
 
         RequestDispatcher requestDispatcher=
                 req.getRequestDispatcher("feedbackSuccess.jsp");
         req.setAttribute("message","Feedback Successfully saved");
-        req.setAttribute("name",name);
-        req.setAttribute("email",email);
-        req.setAttribute("mobile",mobile);
-        req.setAttribute("rating",rating);
-        req.setAttribute("message",message);
+        req.setAttribute("feedbackDto",feedbackDto);
         requestDispatcher.forward(req,resp);
     }
 }
