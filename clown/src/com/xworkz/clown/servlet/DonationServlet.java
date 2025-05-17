@@ -1,5 +1,7 @@
 package com.xworkz.clown.servlet;
 
+import Dto.DonationDto;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,14 +19,17 @@ public class DonationServlet extends HttpServlet {
         String mobile=req.getParameter("mobile");
         String amount=req.getParameter("amount");
         System.out.println("using request dispatcher to forward the req and res to another jsp/servlet");
+        DonationDto donationDto=new DonationDto();
+        donationDto.setName(name);
+        donationDto.setEmail(email);
+        donationDto.setMobile(mobile);
+        donationDto.setAmount(amount);
+        System.out.println("DonationDto:"+donationDto);
 
         RequestDispatcher requestDispatcher=
                 req.getRequestDispatcher("donationSuccess.jsp");
         req.setAttribute("message","Donation Success");
-        req.setAttribute("name",name);
-        req.setAttribute("email",email);
-        req.setAttribute("mobile",mobile);
-        req.setAttribute("amount",amount);
+        req.setAttribute("donationDto",donationDto);
         requestDispatcher.forward(req,resp);
 
     }
