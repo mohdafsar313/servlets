@@ -30,8 +30,6 @@ public class DonationServlet extends HttpServlet {
         DonationService donationService = new DonationServiceImpl();
         boolean saved = donationService.save(donationDto);
         if (saved) {
-            RequestDispatcher dispatcher =
-                    req.getRequestDispatcher("donationSuccess.jsp");
 
             RequestDispatcher requestDispatcher =
                     req.getRequestDispatcher("donationSuccess.jsp");
@@ -41,8 +39,8 @@ public class DonationServlet extends HttpServlet {
 
         }
             else{
-                RequestDispatcher dispatcher =
-                        req.getRequestDispatcher("Furniture.jsp");
+                RequestDispatcher requestDispatcher =
+                        req.getRequestDispatcher("donation.jsp");
                 req.setAttribute("message", "Saving of Donation Failed");
             }
         }

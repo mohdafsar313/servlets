@@ -2,6 +2,10 @@ package com.xworkz.clown.servlet;
 
 import Dto.FirDto;
 import Dto.LicenceDto;
+import com.xworkz.clown.servlet.service.DonationService;
+import com.xworkz.clown.servlet.service.DonationServiceImpl;
+import com.xworkz.clown.servlet.service.LicenceService;
+import com.xworkz.clown.servlet.service.LicenceServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,11 +28,19 @@ public class LicenceServlet extends HttpServlet {
         licenceDto.setEmail(email);
         licenceDto.setMobile(mobile);
         licenceDto.setLicenseType(licenseType);
-
-        RequestDispatcher requestDispatcher=
-                req.getRequestDispatcher("licenceSuccess.jsp");
-        req.setAttribute("message","Licence Successfully Completed");
-        req.setAttribute("licenceDto",licenceDto);
-        requestDispatcher.forward(req,resp);
+        LicenceService licenceService = new LicenceServiceImpl();
+        boolean saved = licenceService.save(licenceDto);
+        if(saved) {
+            RequestDispatcher requestDispatcher =
+                    req.getRequestDispatcher("licenceSuccess.jsp");
+            req.setAttribute("message", "Licence Successfully Completed");
+            req.setAttribute("licenceDto", licenceDto);
+            requestDispatcher.forward(req, resp);
+        }
+        else {
+            RequestDispatcher requestDispatcher =
+                    req.getRequestDispatcher("licence.jsp");
+            req.setAttribute("message", "Saving of Licence Failed");
+        }
     }
 }
