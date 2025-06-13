@@ -2,120 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
 </head>
-<body class="bg-light">
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg bg-warning">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Ministry of Road Transport & Highways</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
+                    </li>
 
-<div class="container mt-5">
-    <div class="card shadow-lg">
-        <div class="card-header bg-primary text-white">
-            <h3 class="mb-0">Enter Weather Information</h3>
+
+
+
+                </ul>
+                </li>
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
         </div>
-        <div class="card-body">
-            <form method="post" action="weather">
-                <div class="mb-3">
-                    <label for="placeName" class="form-label">Place Name</label>
-                    <input type="text" class="form-control" id="placeName" name="placeName" required>
-                </div>
+    </nav>
 
-                <div class="mb-3">
-                    <label for="weather" class="form-label">Weather</label>
-                    <input type="text" class="form-control" id="weather" name="weather" required>
-                </div>
+</header>
+<div align="center">
+    <h2>AccuWeather</h2>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="minTemp" class="form-label">Min Temp (°C)</label>
-                        <input type="number" class="form-control" id="minTemp" name="minTemp" step="0.1">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="maxTemp" class="form-label">Max Temp (°C)</label>
-                        <input type="number" class="form-control" id="maxTemp" name="maxTemp" step="0.1">
-                    </div>
-                </div>
+    <h6 style="color:red"> ${message}</h6>
+    <form action="Wea" method="Post">
+        Place Name:<input type="text" name="plname"><br><br>
+        Weather:<input type="text" name="wename"><br><br>
+        MinTemp:<input type="degree" name="miname"><br><br>
+        MaxTemp:<input type="degree" name="maname"><br><br>
+        Cloudy:<input type="text" name="clname"><br><br>
+        Raining:<input type="text" name="raname"><br><br>
+        Rain in MM:<input type="int" name="rainame"><br><br>
+        Humidity:<input type="int" name="huname"><br><br>
+        WindSpeed:<input type="int" name="winame"><br><br>
+        SunRiseTime:<input type="time" name="suname"><br><br>
+        SunSetTime:<input type="time" name="sunname"><br><br>
+        MoonRiseTime:<input type="time" name="moname"><br><br>
+        MoonSetTime:<input type="time" name="mooname"><br><br>
+        RainStartTime:<input type="time" name="tiname"><br><br>
+        RainEndTime:<input type="time" name="timname"><br><br>
+        Precipitation:<input type="text" name="precname"><br><br>
 
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label>Cloudy:</label>
-                        <select name="cloudy">
-                            <option selected disabled>Select</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6">
-                        <label>Raining:</label>
-                        <select name="raining">
-                            <option selected disabled>Select</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="mb-3">
-                    <label for="rainMM" class="form-label">Rain in MM</label>
-                    <input type="number" class="form-control" id="rainMM" name="rainMM" step="0.1">
-                </div>
 
-                <div class="mb-3">
-                    <label for="humidity" class="form-label">Humidity (%)</label>
-                    <input type="number" class="form-control" id="humidity" name="humidity" step="0.1">
-                </div>
+        <input type="submit" class="btn btn-primary" value="Submit Weather Forecast"><br><br>
 
-                <div class="mb-3">
-                    <label for="windSpeed" class="form-label">Wind Speed (km/h)</label>
-                    <input type="number" class="form-control" id="windSpeed" name="windSpeed" step="0.1">
-                </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="sunriseTime" class="form-label">Sunrise Time</label>
-                        <input type="time" class="form-control" id="sunriseTime" name="sunriseTime">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="sunsetTime" class="form-label">Sunset Time</label>
-                        <input type="time" class="form-control" id="sunsetTime" name="sunsetTime">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="moonRiseTime" class="form-label">Moon Rise Time</label>
-                        <input type="time" class="form-control" id="moonRiseTime" name="moonRiseTime">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="moonSetTime" class="form-label">Moon Set Time</label>
-                        <input type="time" class="form-control" id="moonSetTime" name="moonSetTime">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="rainStartTime" class="form-label">Rain Start Time</label>
-                        <input type="time" class="form-control" id="rainStartTime" name="rainStartTime">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="rainEndTime" class="form-label">Rain End Time</label>
-                        <input type="time" class="form-control" id="rainEndTime" name="rainEndTime">
-                    </div>
-                </div>
-
-                <div class="mb-4">
-                    <label for="precipitation" class="form-label">Precipitation</label>
-                    <input type="number" class="form-control" id="precipitation" name="precipitation" step="0.1">
-                </div>
-
-                <div class="text-end">
-                    <button type="submit" class="btn btn-success">Save Weather Info</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    </form>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

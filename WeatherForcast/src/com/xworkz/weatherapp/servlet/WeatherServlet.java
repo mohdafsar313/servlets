@@ -14,62 +14,114 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns="/weather", loadOnStartup = 1)
+@WebServlet(urlPatterns="/wea", loadOnStartup = 1)
+
 public class WeatherServlet extends HttpServlet {
+    public WeatherServlet() {
+        System.out.println("Running in the WeatherServlet ");
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Running doPost method in WeatherServlet");
-
-        String placeName = req.getParameter("placeName");
-        String weather = req.getParameter("weather");
-        String minTemp = req.getParameter("minTemp");
-        String maxTemp = req.getParameter("maxTemp");
-        String cloudy = req.getParameter("cloudy");
-        String raining = req.getParameter("raining");
-        String rainMM = req.getParameter("rainMM");
-        String humidity = req.getParameter("humidity");
-        String windSpeed = req.getParameter("windSpeed");
-        String sunriseTime = req.getParameter("sunriseTime");
-        String sunsetTime = req.getParameter("sunsetTime");
-        String moonRiseTime = req.getParameter("moonRiseTime");
-        String moonSetTime = req.getParameter("moonSetTime");
-        String rainStartTime = req.getParameter("rainStartTime");
-        String rainEndTime = req.getParameter("rainEndTime");
-        String precipitation = req.getParameter("precipitation");
-
-        WeatherDTO weatherDTO = new WeatherDTO();
-        weatherDTO.setPlaceName(placeName);
-        weatherDTO.setWeather(weather);
-        weatherDTO.setMinTemp(Float.parseFloat(minTemp));
-        weatherDTO.setMaxTemp(Float.parseFloat(maxTemp));
-        weatherDTO.setCloudy(cloudy);
-        weatherDTO.setRaining(raining);
-        weatherDTO.setRainInMM(Float.valueOf(rainMM));
-        weatherDTO.setHumidity(Float.valueOf(humidity));
-        weatherDTO.setWindSpeed(Float.valueOf(windSpeed));
-        weatherDTO.setSunRiseTime(sunriseTime);
-        weatherDTO.setSunSetTime(sunsetTime);
-        weatherDTO.setMoonRiseTime(moonRiseTime);
-        weatherDTO.setMoonSetTime(moonSetTime);
-        weatherDTO.setRainStartTime(rainStartTime);
-        weatherDTO.setRainEndTime(rainEndTime);
-        weatherDTO.setPrecipitation(Float.valueOf(precipitation));
+        System.out.println("Post method in the weather Servlet");
 
 
-        WeatherService weatherService = new WeatherServiceImpl();
-        boolean saved = weatherService.save(weatherDTO);
+        String plname = req.getParameter("plname");
+        System.out.println(plname);
 
-        if(saved){
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("WeatherSuccess.jsp");
+        String wename = req.getParameter("wename");
+        System.out.println(wename);
 
-            req.setAttribute("message", "Details saved successfully");
-            req.setAttribute("info", weatherDTO);
-            requestDispatcher.forward(req, resp);
-        }else {
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("WeatherForm.jsp");
+        String miname = req.getParameter("miname");
+        System.out.println(miname);
 
-            req.setAttribute("message", "Save failed");
-            requestDispatcher.forward(req, resp);
-        }
+        String maname = req.getParameter("maname");
+        System.out.println(maname);
+
+        String clname = req.getParameter("clname");
+        System.out.println(clname);
+
+        String raname = req.getParameter("raname");
+        System.out.println(raname);
+
+        String rainame = req.getParameter("rainame");
+        System.out.println(rainame);
+
+        String huname = req.getParameter("huname");
+        System.out.println(huname);
+
+        String winame = req.getParameter("winame");
+        System.out.println(winame);
+
+        String suname = req.getParameter("suname");
+        System.out.println(suname);
+
+        String sunname = req.getParameter("sunname");
+        System.out.println(sunname);
+
+        String moname = req.getParameter("moname");
+        System.out.println(moname);
+
+        String mooname = req.getParameter("mooname");
+        System.out.println(mooname);
+
+        String tiname = req.getParameter("tiname");
+        System.out.println(tiname);
+
+        String timname = req.getParameter("timname");
+        System.out.println(timname);
+
+        String precname = req.getParameter("precname");
+        System.out.println(precname);
+
+        req.setAttribute("plname", plname);
+        req.setAttribute("wename", wename);
+        req.setAttribute("miname", miname);
+        req.setAttribute("maname", maname);
+        req.setAttribute("clname", clname);
+        req.setAttribute("raname", raname);
+        req.setAttribute("rainame", rainame);
+        req.setAttribute("huname", huname);
+        req.setAttribute("winame", winame);
+        req.setAttribute("suname", suname);
+        req.setAttribute("sunname", sunname);
+
+        req.setAttribute("moname", moname);
+        req.setAttribute("mooname", mooname);
+        req.setAttribute("tiname", tiname);
+        req.setAttribute("timname", timname);
+        req.setAttribute("precname", precname);
+
+        WeatherDTO dto =new WeatherDTO();
+        dto.setplaceName(plname);
+        dto.setweather(wename);
+        dto.setminTemp(miname);
+        dto.setmaxTemp(maname);
+
+        dto.setcloudy(clname);
+        dto.setraining(raname);
+        dto.setrain(rainame);
+        dto.sethumidity(huname);
+
+        dto.setwindSpeed(winame);
+        dto.setsunRiseTime(suname);
+        dto.setsunSetTime(sunname);
+        dto.setmoonRiseTime(moname);
+
+        dto.setmoonSetTime(mooname);
+        dto.setrainStartTime(tiname);
+        dto.setrainEndTime(timname);
+        dto.setprecipitation(precname);
+
+
+        WeatherService service =new WeatherServiceImpl();
+        boolean saved =service.save(dto);
+
+
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("weather.jsp");
+        req.setAttribute("message", "Save is success");
+        requestDispatcher.forward(req, resp);
+        System.out.println("Successfull");
+
     }
 }
