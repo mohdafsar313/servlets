@@ -28,26 +28,48 @@ public class WatchServlet extends HttpServlet {
         String isSmart = req.getParameter("isSmart");
         String warrantyYearsStr = req.getParameter("warrantyYears");
 
-        System.out.println(brand);
-        System.out.println(model);
-        System.out.println(priceStr);
-        System.out.println(manufactureDate);
-        System.out.println(isSmart);
-        System.out.println(warrantyYearsStr);
+        boolean hasErrors = false;
+        StringBuilder errors = new StringBuilder();
 
-        // Set request attributes
-        req.setAttribute("brand", brand);
-        req.setAttribute("model", model);
-        req.setAttribute("price", priceStr);
-        req.setAttribute("manufactureDate", manufactureDate);
-        req.setAttribute("isSmart", isSmart);
-        req.setAttribute("warrantyYears", warrantyYearsStr);
+        if (brand == null || brand.trim().isEmpty()) {
+            hasErrors = true;
+            errors.append("Brand is required.<br>");
+        }
+        if (model == null || model.trim().isEmpty()) {
+            hasErrors = true;
+            errors.append("Model is required.<br>");
+        }
+        double price = 0;
+        try {
+            price = Double.parseDouble(priceStr);
+            if (price <= 0) {
+                hasErrors = true;
+                errors.append("Price must be greater than zero.<br>");
+            }
+        } catch (NumberFormatException e) {
+            hasErrors = true;
+            errors.append("Invalid price.<br>");
+        }
+        if (manufactureDate == null || manufactureDate.trim().isEmpty()) {
+            hasErrors = true;
+            errors.append("Manufacture Date is required.<br>");
+        }
+        if (isSmart == null || isSmart.trim().isEmpty()) {
+            hasErrors = true;
+            errors.append("Please select if it is Smart.<br>");
+        }
+        int warrantyYears = 0;
+        try {
+            warrantyYears = Integer.parseInt(warrantyYearsStr);
+            if (warrantyYears <= 0) {
+                hasErrors = true;
+                errors.append("Warranty years must be greater than 0.<br>");
+            }
+        } catch (NumberFormatException e) {
+            hasErrors = true;
+            errors.append("Invalid warranty years.<br>");
+        }
 
-        // Parse numeric values
-        double price = Double.parseDouble(priceStr);
-        int warrantyYears = Integer.parseInt(warrantyYearsStr);
-
-        // Create DTO and set values
         WatchDto dto = new WatchDto();
         dto.setBrand(brand);
         dto.setModel(model);
@@ -56,15 +78,24 @@ public class WatchServlet extends HttpServlet {
         dto.setIsSmart(isSmart);
         dto.setWarrantyYears(warrantyYears);
 
-        // Save using service
+        if (hasErrors) {
+            req.setAttribute("message", errors.toString());
+            req.setAttribute("dto", dto);
+            req.getRequestDispatcher("form.jsp").forward(req, resp);
+            return;
+        }
+
         WatchService service = new WatchServiceImpl();
         boolean saved = service.save(dto);
 
-        // Forward to JSP with message
-        RequestDispatcher dispatcher = req.getRequestDispatcher("watches.jsp");
-        req.setAttribute("message", "Watch details saved successfully!");
-        dispatcher.forward(req, resp);
-
-        System.out.println("Watch saved successfully");
+        if (saved) {
+            req.setAttribute("message", "Watch details saved successfully!");
+            req.setAttribute("details", dto);
+            req.getRequestDispatcher("success.jsp").forward(req, resp);
+        } else {
+            req.setAttribute("message", "Something went wrong. Try again.");
+            req.setAttribute("dto", dto);
+            req.getRequestDispatcher("form.jsp").forward(req, resp);
+        }
     }
 }

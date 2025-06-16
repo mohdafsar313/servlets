@@ -27,6 +27,46 @@
             </div>
         </div>
     </nav>
+    <script>
+        function validateWatchForm() {
+            const brand = document.forms["watchForm"]["brand"].value.trim();
+            const model = document.forms["watchForm"]["model"].value.trim();
+            const price = document.forms["watchForm"]["price"].value;
+            const manufactureDate = document.forms["watchForm"]["manufactureDate"].value;
+            const isSmart = document.forms["watchForm"]["isSmart"].value.trim();
+            const warrantyYears = document.forms["watchForm"]["warrantyYears"].value;
+
+            const priceValue = parseFloat(price);
+            const warranty = parseInt(warrantyYears, 10);
+
+            if (brand.length < 2) {
+                alert("Brand must be at least 2 characters.");
+                return false;
+            }
+            if (model.length < 2) {
+                alert("Model must be at least 2 characters.");
+                return false;
+            }
+            if (isNaN(priceValue) || priceValue <= 0) {
+                alert("Please enter a valid price.");
+                return false;
+            }
+            if (manufactureDate === "") {
+                alert("Please select a manufacture date.");
+                return false;
+            }
+            if (isSmart.toLowerCase() !== "yes" && isSmart.toLowerCase() !== "no") {
+                alert("Please enter 'yes' or 'no' for isSmart.");
+                return false;
+            }
+            if (isNaN(warranty) || warranty < 0) {
+                alert("Please enter a valid warranty period.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </header>
 
 <div align="center">
