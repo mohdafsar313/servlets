@@ -29,21 +29,21 @@
         </tr>
         <tr>
             <td><strong>Manufacture Date</strong></td>
-            <td>${details.manufactureDate}</td>
+            <td>${details.mfgDate}</td>
         </tr>
         <tr>
             <td><strong>Smart</strong></td>
-            <td>${details.isSmart}</td>
+            <td>${details.smart}</td>
         </tr>
         <tr>
             <td><strong>Warranty (Years)</strong></td>
-            <td>${details.warrantyYears}</td>
+            <td>${details.warranty}</td>
         </tr>
         </tbody>
     </table>
 
     <div class="mt-4">
-        <a href="form.jsp" class="btn btn-primary">Submit Another</a>
+        <a href="watches.jsp" class="btn btn-primary">Submit Another</a>
         <a href="index.jsp" class="btn btn-secondary">Back to Home</a>
     </div>
 </div>

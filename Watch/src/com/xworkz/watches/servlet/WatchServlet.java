@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/watch", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/WatchServlet", loadOnStartup = 1)
 public class WatchServlet extends HttpServlet {
 
     public WatchServlet() {
@@ -24,9 +24,9 @@ public class WatchServlet extends HttpServlet {
         String brand = req.getParameter("brand");
         String model = req.getParameter("model");
         String priceStr = req.getParameter("price");
-        String manufactureDate = req.getParameter("manufactureDate");
-        String isSmart = req.getParameter("isSmart");
-        String warrantyYearsStr = req.getParameter("warrantyYears");
+        String mfgDate = req.getParameter("mfgDate");
+        String smart = req.getParameter("smart");
+        String warranty = req.getParameter("warranty");
 
         boolean hasErrors = false;
         StringBuilder errors = new StringBuilder();
@@ -50,17 +50,17 @@ public class WatchServlet extends HttpServlet {
             hasErrors = true;
             errors.append("Invalid price.<br>");
         }
-        if (manufactureDate == null || manufactureDate.trim().isEmpty()) {
+        if (mfgDate == null || mfgDate.trim().isEmpty()) {
             hasErrors = true;
             errors.append("Manufacture Date is required.<br>");
         }
-        if (isSmart == null || isSmart.trim().isEmpty()) {
+        if (smart == null || smart.trim().isEmpty()) {
             hasErrors = true;
             errors.append("Please select if it is Smart.<br>");
         }
         int warrantyYears = 0;
         try {
-            warrantyYears = Integer.parseInt(warrantyYearsStr);
+            warrantyYears = Integer.parseInt(warranty);
             if (warrantyYears <= 0) {
                 hasErrors = true;
                 errors.append("Warranty years must be greater than 0.<br>");
@@ -74,14 +74,14 @@ public class WatchServlet extends HttpServlet {
         dto.setBrand(brand);
         dto.setModel(model);
         dto.setPrice(price);
-        dto.setManufactureDate(manufactureDate);
-        dto.setIsSmart(isSmart);
-        dto.setWarrantyYears(warrantyYears);
+        dto.setMfgDate(mfgDate);
+        dto.setSmart(smart);
+        dto.setWarranty(warrantyYears);
 
         if (hasErrors) {
             req.setAttribute("message", errors.toString());
             req.setAttribute("dto", dto);
-            req.getRequestDispatcher("form.jsp").forward(req, resp);
+            req.getRequestDispatcher("watches.jsp").forward(req, resp);
             return;
         }
 
@@ -95,7 +95,7 @@ public class WatchServlet extends HttpServlet {
         } else {
             req.setAttribute("message", "Something went wrong. Try again.");
             req.setAttribute("dto", dto);
-            req.getRequestDispatcher("form.jsp").forward(req, resp);
+            req.getRequestDispatcher("watches.jsp").forward(req, resp);
         }
     }
 }

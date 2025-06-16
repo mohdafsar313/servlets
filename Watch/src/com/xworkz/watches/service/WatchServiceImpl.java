@@ -34,14 +34,14 @@ public class WatchServiceImpl implements WatchService {
                 System.out.println("Price should be in range 500 to 50000.");
             }
 
-            String manufactureDate = dto.getManufactureDate();
+            String manufactureDate = dto.getMfgDate();
             if (manufactureDate != null && !manufactureDate.isEmpty()) {
                 System.out.println("Manufacture date is valid.");
             } else {
                 System.out.println("Manufacture date should not be null or empty.");
             }
 
-            String isSmart = dto.getIsSmart();
+            String isSmart = dto.getSmart();
             if (isSmart != null && (isSmart.equalsIgnoreCase("yes") ||
                     isSmart.equalsIgnoreCase("no"))) {
                 System.out.println("isSmart is valid.");
@@ -49,7 +49,7 @@ public class WatchServiceImpl implements WatchService {
                 System.out.println("isSmart should be 'yes' or 'no'.");
             }
 
-            int warrantyYears = dto.getWarrantyYears();
+            int warrantyYears = dto.getWarranty();
             if (warrantyYears >= 0 && warrantyYears <= 10) {
                 System.out.println("Warranty years is valid.");
             } else {

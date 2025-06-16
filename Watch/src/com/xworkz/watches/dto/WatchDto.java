@@ -5,9 +5,9 @@ public class WatchDto {
         private String brand;
         private String model;
         private double price;
-        private String manufactureDate;
-        private String isSmart;
-        private int warrantyYears;
+        private String mfgDate;
+        private String smart;
+        private int warranty;
 
 
         public void setBrand(String brand) {
@@ -22,16 +22,16 @@ public class WatchDto {
             this.price = price;
         }
 
-        public void setManufactureDate(String manufactureDate) {
-            this.manufactureDate = manufactureDate;
+        public void setMfgDate(String mfgDate) {
+            this.mfgDate = mfgDate;
         }
 
-        public void setIsSmart(String isSmart) {
-            this.isSmart = isSmart;
+        public void setSmart(String smart) {
+            this.smart = smart;
         }
 
-        public void setWarrantyYears(int warrantyYears) {
-            this.warrantyYears = warrantyYears;
+        public void setWarranty(int warranty) {
+            this.warranty = warranty;
         }
 
 
@@ -47,16 +47,16 @@ public class WatchDto {
             return price;
         }
 
-        public String getManufactureDate() {
-            return manufactureDate;
+        public String getMfgDate() {
+            return mfgDate;
         }
 
-        public String getIsSmart() {
-            return isSmart;
+        public String getSmart() {
+            return smart;
         }
 
-        public int getWarrantyYears() {
-            return warrantyYears;
+        public int getWarranty() {
+            return warranty;
         }
     }
 

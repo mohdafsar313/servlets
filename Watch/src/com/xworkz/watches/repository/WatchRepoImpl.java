@@ -2,10 +2,7 @@ package com.xworkz.watches.repository;
 
 import com.xworkz.watches.dto.WatchDto;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class WatchRepoImpl implements WatchRepo {
 
@@ -23,18 +20,39 @@ public class WatchRepoImpl implements WatchRepo {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection(url, username, password);
 
-            String sql = "INSERT INTO watches VALUES (0, '" + dto.getBrand() + "', '" + dto.getModel() + "', " +
-                    dto.getPrice() + ", '" + dto.getManufactureDate() + "', '" + dto.getIsSmart() + "', " + dto.getWarrantyYears() + ")";
+            Connection connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/yourdatabase", "root", "yourPass");
 
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(sql);
+            String sql = "INSERT INTO Watches (brand, model, price, mfgDate, smart, warranty) VALUES (?,?,?,?,?,?)";
 
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, dto.getBrand());
+            preparedStatement.setString(2, dto.getModel());
+            preparedStatement.setDouble(3, dto.getPrice());
+            preparedStatement.setString(4, dto.getMfgDate());
+            preparedStatement.setString(5, dto.getSmart());
+            preparedStatement.setInt(6, dto.getWarranty());
+
+           // int rows = preparedStatement.executeUpdate();
+            System.out.println("About to execute the insert.");
+            int rows = preparedStatement.executeUpdate();
+            System.out.println("Execute finished. Rows affected: " + rows);
+
+            if (rows > 0) {
+                System.out.println("Watch successfully saved in the database.");
+            } else {
+                System.out.println("Watch not saved.");
+            }
+            preparedStatement.close();
             connection.close();
+
+
+
         } catch (ClassNotFoundException | SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+
 
         return true;
     }
