@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Optional;
 
 @WebServlet(urlPatterns = "/WatchServlet", loadOnStartup = 1)
 public class WatchServlet extends HttpServlet {
@@ -96,6 +97,25 @@ public class WatchServlet extends HttpServlet {
             req.setAttribute("message", "Something went wrong. Try again.");
             req.setAttribute("dto", dto);
             req.getRequestDispatcher("watches.jsp").forward(req, resp);
+        }
+    }
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("running get in WatchServlet..");
+        String watchId= req.getParameter("watchId");
+        if(watchId!=null)
+        {
+            int id=Integer.parseInt(watchId);
+            System.out.println("search id :"+id);
+            WatchService watchService=new WatchServiceImpl();
+                Optional<WatchDto> optionalWatchDTO= watchService.findById(id);
+            if(optionalWatchDTO.isPresent())
+            {
+                System.out.println("watch data is found");
+            }
+            else{
+                System.out.println("watch data is not found for id :"+id);
+            }
         }
     }
 }

@@ -4,6 +4,8 @@ import com.xworkz.watches.dto.WatchDto;
 import com.xworkz.watches.repository.WatchRepo;
 import com.xworkz.watches.repository.WatchRepoImpl;
 
+import java.util.Optional;
+
 public class WatchServiceImpl implements WatchService {
 
     public WatchServiceImpl() {
@@ -59,6 +61,18 @@ public class WatchServiceImpl implements WatchService {
             System.out.println("WatchDTO is null.");
         }
         return true;
+    }
+    @Override
+    public Optional<WatchDto> findById(int id) {//>0
+        System.out.println("running findById in dusterServiceImpl...");
+        if(id>0)
+        {
+            System.out.println("id is valid :"+id);// call the repo
+            WatchRepo watchRepo=new WatchRepoImpl();
+            return watchRepo.findById(id);
+        }
+
+        return WatchService.super.findById(id);
     }
 }
 

@@ -3,6 +3,7 @@ package com.xworkz.watches.repository;
 import com.xworkz.watches.dto.WatchDto;
 
 import java.sql.*;
+import java.util.Optional;
 
 public class WatchRepoImpl implements WatchRepo {
 
@@ -55,6 +56,12 @@ public class WatchRepoImpl implements WatchRepo {
 
 
         return true;
+    }
+    @Override
+    public Optional<WatchDto> findById(int id) {
+        System.out.println("running findById in dusterRepositoryImpl...");
+
+        return WatchRepo.super.findById(id);
     }
 }
 
