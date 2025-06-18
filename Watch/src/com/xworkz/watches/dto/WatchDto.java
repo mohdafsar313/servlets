@@ -1,16 +1,28 @@
 package com.xworkz.watches.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.time.LocalDate;
+
+@Getter
+@Setter
+@Data
+@AllArgsConstructor
+
 public class WatchDto {
 
         private String brand;
         private String model;
         private double price;
-        private String mfgDate;
+        private LocalDate mfgDate;
         private String smart;
         private int warranty;
 
 
-        public void setBrand(String brand) {
+    /*public void setBrand(String brand) {
             this.brand = brand;
         }
 
@@ -56,7 +68,7 @@ public class WatchDto {
         }
 
         public int getWarranty() {
-            return warranty;
-        }
+            return warranty;*/
+        /*}*/
     }
 

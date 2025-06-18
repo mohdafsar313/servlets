@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Optional;
 
 @WebServlet(urlPatterns = "/WatchServlet", loadOnStartup = 1)
@@ -75,7 +76,7 @@ public class WatchServlet extends HttpServlet {
         dto.setBrand(brand);
         dto.setModel(model);
         dto.setPrice(price);
-        dto.setMfgDate(mfgDate);
+        dto.setMfgDate(LocalDate.parse(mfgDate));
         dto.setSmart(smart);
         dto.setWarranty(warrantyYears);
 
