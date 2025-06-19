@@ -9,53 +9,60 @@
 <div><button><a href="index.jsp">home page</a></button></div>
 
 <div class="container py-5">
-    <h2 class="text-center text-primary mb-4">Wanna add your duster to our selling website?
-        Give details of your duster</h2>
+    <div class="card shadow-lg rounded-4">
+        <div class="card-body p-5">
+            <h2 class="text-center text-primary mb-4 fw-bold">Enter Duster Details</h2>
 
-    <span style="color:green;">${success}</span>
-    <span style="color:red;">${failure}</span>
-
-    <form action="move" method="post" class="row g-3">
-
-        <div class="col-md-6">
-            <label class="form-label">Duster Material</label>
-            <input type="text" name="material" class="form-control" required value="${dto.material}">
-        </div>
-
-        <div class="col-md-6">
-            <label class="form-label">Duster Color</label>
-            <input type="text" name="color" class="form-control" required
-                   value="${dto.color}">
-        </div>
-
-        <div class="col-md-6">
-            <label class="form-label">Manufactured date</label>
-            <input type="date" name="dateOfManufac" class="form-control" required  value="${dto.dateOfManufac}">
-        </div>
-
-        <div class="col-md-6">
-            <label class="form-label">Duster Cost</label>
-            <input type="number" name="cost" class="form-control" required value="${dto.cost}">
-        </div>
-
-        <div class="col-md-6">
-            <label class="form-label">Quantity</label>
-            <input type="number" name="quantity" class="form-control" value="${dto.quantity}">
-        </div>
-
-        <div class="col-md-6">
-            <div class="form-check mt-4">
-                <input type="checkbox" name="isUseful" value="${dto.isUseful}" class="form-check-input" id="isUseful">
-                <label class="form-check-label" for="isUseful">Is Useful?</label>
+            <!-- Feedback messages -->
+            <div class="text-center mb-3">
+                <span class="text-success fw-semibold">${success}</span>
+                <span class="text-danger fw-semibold">${failure}</span>
             </div>
+
+            <form action="move" method="post">
+                <div class="row g-4">
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Duster Material</label>
+                        <input type="text" name="material" class="form-control form-control-lg" required value="${dto.material}">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Duster Color</label>
+                        <input type="text" name="color" class="form-control form-control-lg" required value="${dto.color}">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Manufactured Date</label>
+                        <input type="date" name="dateOfManufac" class="form-control form-control-lg" required value="${dto.dateOfManufac}">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Duster Cost</label>
+                        <input type="number" name="cost" class="form-control form-control-lg" required value="${dto.cost}">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label fw-medium">Quantity</label>
+                        <input type="number" name="quantity" class="form-control form-control-lg" required value="${dto.quantity}">
+                    </div>
+
+                    <div class="col-md-6 d-flex align-items-center">
+                        <div class="form-check ms-2">
+                            <input type="checkbox" name="isUseful" class="form-check-input" id="isUseful" value="${dto.isUseful}">
+                            <label class="form-check-label fw-medium" for="isUseful">Is Useful?</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 text-center mt-4">
+                        <input type="submit" value="Submit" class="btn btn-success btn-lg px-5 shadow-sm rounded-pill">
+                    </div>
+                </div>
+            </form>
         </div>
+    </div>
+</div>
 
-
-        <div class="col-12 text-center mt-4">
-            <input type="submit" value="Check" class="btn btn-success btn-lg px-5">
-        </div>
-
-    </form>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

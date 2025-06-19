@@ -24,5 +24,11 @@ public class DusterDTO {
 
     String isUseful;
 
+
+    public DusterDTO() {
+
+    }
+
 }
+
 

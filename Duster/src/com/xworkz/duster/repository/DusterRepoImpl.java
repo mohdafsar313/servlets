@@ -32,14 +32,14 @@ public class DusterRepoImpl implements DusterRepo{
         return false;
     }
 
-   /* @Override
+   @Override
     public DusterDTO[] findAll() {
         int index=0;
         int arraySize=1;
         DusterDTO[] dusterDtos=null;
 
         try{
-            Class.forName(DBProperties.JDBC_DRIVER.getProp());
+            Class.forName("com.mysql.cj.jdbc.Driver");
             //get connection
             Connection connection = DriverManager.getConnection(DBProperties.URL.getProp(), DBProperties.USER_NAME.getProp(), DBProperties.SECRET.getProp());
             String fetchAll ="select * from duster_details";
@@ -54,18 +54,16 @@ public class DusterRepoImpl implements DusterRepo{
                 System.out.println(resultSet.getInt(5));
                 System.out.println(resultSet.getString(6));
                 System.out.println("==========================================");
-                *//*DusterDTO loginDto=new DusterDTO();
-                loginDto.setMaterial(resultSet.getString(1));
-                loginDto.setColor(resultSet.getString(2));
-                loginDto.setCost(resultSet.getInt(3));
-                loginDto.setDateOfManufac(resultSet.getDate(4).toLocalDate());
-                loginDto.setQuantity(resultSet.getInt(5));
-                loginDto.setIsUseful(resultSet.getString(6));
-                loginDto.setCreatedTime(resultSet.getTimestamp(7));
-
-                dusterDtos[index]=loginDto;
+                DusterDTO dusterDTO=new DusterDTO();
+                dusterDTO.setMaterial(resultSet.getString(1));
+                dusterDTO.setColor(resultSet.getString(2));
+                dusterDTO.setCost(resultSet.getInt(3));
+                dusterDTO.setDateOfManufac(resultSet.getDate(4).toLocalDate());
+                dusterDTO.setQuantity(resultSet.getInt(5));
+                dusterDTO.setIsUseful(resultSet.getString(6));
+                dusterDtos[index]=dusterDTO;
                 arraySize++;
-                index++;*//*
+                index++;
 
 
             }
@@ -75,7 +73,7 @@ public class DusterRepoImpl implements DusterRepo{
             e.printStackTrace();
         }
         return dusterDtos;
-    }*/
+    }
 
     @Override
     public Optional<DusterDTO> findById(int id) {

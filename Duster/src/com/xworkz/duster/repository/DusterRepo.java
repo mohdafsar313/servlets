@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface DusterRepo {
     boolean persist(DusterDTO dusterDTO);
-    /*DusterDTO[] findAll();*/
+    DusterDTO[] findAll();
 
     default Optional<DusterDTO> findById(int id)
     {
