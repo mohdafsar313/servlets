@@ -147,8 +147,8 @@ private static final String PASSWORD = "your_password";
 
 ## 📌 Credits
 
-- Developed by [Your Name]
-- Internship Project / Final Year Submission
+- Developed by Mohammed Afsar K A(mohdafsar313)
+- Internship Project 
 - Built with 💙 using Java Web Stack
 
 ---
