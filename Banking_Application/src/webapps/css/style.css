@@ -1,0 +1,101 @@
+.bank-body {
+    background: url('bank-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 51, 102, 0.85);
+    padding: 10px 20px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.navbar nav a:hover {
+    text-decoration: underline;
+}
+.features-section {
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 1000px;
+}
+
+.features-section h2 {
+    font-size: 28px;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: left;
+}
+
+.feature {
+    background-color: #f0f8ff;
+    border-left: 4px solid #0066cc;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.feature h3 {
+    color: #005fa3;
+    margin-top: 0;
+}
+
+.feature p {
+    margin-bottom: 0;
+    color: #333;
+}
+.feature {
+    background-color: #f0f8ff;
+    border-left: 4px solid #0066cc;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.feature:hover {
+    transform: scale(1.05) rotateX(5deg) rotateY(-5deg);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    text-align: left;
+    perspective: 1000px; /* This enables 3D rotation */
+}
+
